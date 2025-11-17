@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: agent-starter-react
+    runtime: node
+    plan: starter
+    buildCommand: corepack enable && pnpm install && pnpm build
+    startCommand: pnpm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: LIVEKIT_API_KEY
+        sync: false
+      - key: LIVEKIT_API_SECRET
+        sync: false
+      - key: LIVEKIT_URL
+        sync: false
+      - key: NEXT_PUBLIC_APP_CONFIG_ENDPOINT
+        value: ""
+      - key: SANDBOX_ID
+        value: ""
