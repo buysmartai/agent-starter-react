@@ -57,6 +57,7 @@ export function useRoom(appConfig: AppConfig) {
                     agents: [{ agent_name: appConfig.agentName }],
                   }
                 : undefined,
+              avatarId: appConfig.avatarId,
             }),
           });
           return await res.json();

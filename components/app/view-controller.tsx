@@ -6,9 +6,11 @@ import { useRoomContext } from '@livekit/components-react';
 import { useSession } from '@/components/app/session-provider';
 import { SessionView } from '@/components/app/session-view';
 import { WelcomeView } from '@/components/app/welcome-view';
+import { AvatarSelectView } from '@/components/app/avatar-select-view';
 
 const MotionWelcomeView = motion.create(WelcomeView);
 const MotionSessionView = motion.create(SessionView);
+const MotionAvatarSelectView = motion.create(AvatarSelectView);
 
 const VIEW_MOTION_PROPS = {
   variants: {
@@ -31,7 +33,14 @@ const VIEW_MOTION_PROPS = {
 export function ViewController() {
   const room = useRoomContext();
   const isSessionActiveRef = useRef(false);
-  const { appConfig, isSessionActive, startSession } = useSession();
+  const {
+    appConfig,
+    viewState,
+    isSessionActive,
+    goToAvatarSelect,
+    goToWelcome,
+    selectAvatarAndStartSession,
+  } = useSession();
 
   // animation handler holds a reference to stale isSessionActive value
   isSessionActiveRef.current = isSessionActive;
@@ -46,16 +55,26 @@ export function ViewController() {
   return (
     <AnimatePresence mode="wait">
       {/* Welcome screen */}
-      {!isSessionActive && (
+      {viewState === 'welcome' && (
         <MotionWelcomeView
           key="welcome"
           {...VIEW_MOTION_PROPS}
           startButtonText={appConfig.startButtonText}
-          onStartCall={startSession}
+          onStartCall={goToAvatarSelect}
+        />
+      )}
+      {/* Avatar selection screen */}
+      {viewState === 'avatar-select' && (
+        <MotionAvatarSelectView
+          key="avatar-select"
+          {...VIEW_MOTION_PROPS}
+          avatars={appConfig.avatars}
+          onSelect={selectAvatarAndStartSession}
+          onBack={goToWelcome}
         />
       )}
       {/* Session view */}
-      {isSessionActive && (
+      {viewState === 'session' && (
         <MotionSessionView
           key="session-view"
           {...VIEW_MOTION_PROPS}

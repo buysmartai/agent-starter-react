@@ -32,11 +32,13 @@ export async function POST(req: Request) {
     // Parse agent configuration from request body
     const body = await req.json();
     const agentName: string = body?.room_config?.agents?.[0]?.agent_name;
+    const avatarId: string = body?.avatarId ?? 'default_avatar';
 
     // Generate participant token
     const participantName = 'user';
     const participantIdentity = `voice_assistant_user_${Math.floor(Math.random() * 10_000)}`;
-    const roomName = `092dc2543618454f9c00fd7a6621826d_80aee5e80c2e482fb1348adaeb19d421_zh_${Math.floor(Math.random() * 10_000)}`;
+    // userId_avatarId_locale_randomNumber
+    const roomName = `092dc2543618454f9c00fd7a6621826d_${avatarId}_zh_${Math.floor(Math.random() * 10_000)}`;
 
     const participantToken = await createParticipantToken(
       { identity: participantIdentity, name: participantName },
