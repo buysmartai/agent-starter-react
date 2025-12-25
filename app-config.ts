@@ -53,13 +53,13 @@ export const APP_CONFIG_DEFAULTS: AppConfig = {
   // Avatar configuration
   avatars: [
     {
-      id: 'avatar_male_001',
+      id: '3d97d02718a64042ab4a2911982bf92f',
       name: 'Michael',
       description: 'Senior social worker, specializing in counseling',
       image: '/avatars/avatar-male.jpg',
     },
     {
-      id: 'avatar_female_001',
+      id: 'c1b86b09ecb94fdca0e385a812d2f51a',
       name: 'Sarah',
       description: 'Professional social worker, dedicated to community service',
       image: '/avatars/avatar-female.jpg',
