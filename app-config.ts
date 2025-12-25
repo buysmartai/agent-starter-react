@@ -31,9 +31,9 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'LiveKit',
-  pageTitle: 'LiveKit Voice Agent',
-  pageDescription: 'A voice agent built with LiveKit',
+  companyName: 'liveC',
+  pageTitle: 'liveC Voice Agent',
+  pageDescription: 'A voice agent built with liveC',
 
   supportsChatInput: true,
   supportsVideoInput: true,
@@ -53,15 +53,15 @@ export const APP_CONFIG_DEFAULTS: AppConfig = {
   // Avatar configuration
   avatars: [
     {
-      id: '80aee5e80c2e482fb1348adaeb19d421',
-      name: '李明',
-      description: '资深社工，擅长心理辅导',
+      id: 'avatar_male_001',
+      name: 'Michael',
+      description: 'Senior social worker, specializing in counseling',
       image: '/avatars/avatar-male.jpg',
     },
     {
-      id: '80aee5e80c2e482fb1348adaeb19d421',
-      name: '王芳',
-      description: '专业社工，热心服务社区',
+      id: 'avatar_female_001',
+      name: 'Sarah',
+      description: 'Professional social worker, dedicated to community service',
       image: '/avatars/avatar-female.jpg',
     },
   ],

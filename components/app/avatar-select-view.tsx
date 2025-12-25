@@ -37,15 +37,15 @@ export const AvatarSelectView = ({
             className="text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors"
           >
             <ArrowLeft size={20} />
-            <span className="text-sm">返回</span>
+            <span className="text-sm">Back</span>
           </button>
-          <h1 className="text-foreground text-xl font-semibold">选择您的社工</h1>
+          <h1 className="text-foreground text-xl font-semibold">Select Your Agent</h1>
           <div className="w-16" /> {/* Spacer for alignment */}
         </div>
 
         {/* Avatar description */}
         <p className="text-muted-foreground mb-8 max-w-prose leading-6">
-          请选择一位社工为您提供服务，他们都经过专业培训，随时准备为您解答问题。
+          Please select an agent to assist you. All agents are professionally trained and ready to help.
         </p>
 
         {/* Avatar grid */}
@@ -93,7 +93,7 @@ export const AvatarSelectView = ({
           disabled={!selectedId}
           className="w-64 font-mono"
         >
-          开始对话
+          Start Chat
         </Button>
       </section>
     </div>
