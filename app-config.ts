@@ -27,7 +27,6 @@ export interface AppConfig {
 
   // Avatar configuration
   avatars: AvatarConfig[];
-  avatarId?: string;
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
@@ -65,5 +64,4 @@ export const APP_CONFIG_DEFAULTS: AppConfig = {
       image: '/avatars/avatar-female.jpg',
     },
   ],
-  avatarId: undefined,
 };

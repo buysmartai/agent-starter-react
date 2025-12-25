@@ -36,8 +36,8 @@ export function useRoom(appConfig: AppConfig) {
     };
   }, [room]);
 
-  const tokenSource = useMemo(
-    () =>
+  const createTokenSource = useCallback(
+    (avatarId?: string) =>
       TokenSource.custom(async () => {
         const url = new URL(
           process.env.NEXT_PUBLIC_CONN_DETAILS_ENDPOINT ?? '/api/connection-details',
@@ -57,7 +57,7 @@ export function useRoom(appConfig: AppConfig) {
                     agents: [{ agent_name: appConfig.agentName }],
                   }
                 : undefined,
-              avatarId: appConfig.avatarId,
+              avatarId: avatarId,
             }),
           });
           return await res.json();
@@ -69,37 +69,36 @@ export function useRoom(appConfig: AppConfig) {
     [appConfig]
   );
 
-  const startSession = useCallback(() => {
-    setIsSessionActive(true);
+  const startSession = useCallback(
+    (avatarId?: string) => {
+      setIsSessionActive(true);
 
-    if (room.state === 'disconnected') {
-      const { isPreConnectBufferEnabled } = appConfig;
-      Promise.all([
-        room.localParticipant.setMicrophoneEnabled(true, undefined, {
-          preConnectBuffer: isPreConnectBufferEnabled,
-        }),
-        tokenSource
-          .fetch({ agentName: appConfig.agentName })
-          .then((connectionDetails) =>
-            room.connect(connectionDetails.serverUrl, connectionDetails.participantToken)
-          ),
-      ]).catch((error) => {
-        if (aborted.current) {
-          // Once the effect has cleaned up after itself, drop any errors
-          //
-          // These errors are likely caused by this effect rerunning rapidly,
-          // resulting in a previous run `disconnect` running in parallel with
-          // a current run `connect`
-          return;
-        }
+      if (room.state === 'disconnected') {
+        const { isPreConnectBufferEnabled } = appConfig;
+        const tokenSource = createTokenSource(avatarId);
+        Promise.all([
+          room.localParticipant.setMicrophoneEnabled(true, undefined, {
+            preConnectBuffer: isPreConnectBufferEnabled,
+          }),
+          tokenSource
+            .fetch({ agentName: appConfig.agentName })
+            .then((connectionDetails) =>
+              room.connect(connectionDetails.serverUrl, connectionDetails.participantToken)
+            ),
+        ]).catch((error) => {
+          if (aborted.current) {
+            return;
+          }
 
-        toastAlert({
-          title: 'There was an error connecting to the agent',
-          description: `${error.name}: ${error.message}`,
+          toastAlert({
+            title: 'There was an error connecting to the agent',
+            description: `${error.name}: ${error.message}`,
+          });
         });
-      });
-    }
-  }, [room, appConfig, tokenSource]);
+      }
+    },
+    [room, appConfig, createTokenSource]
+  );
 
   const endSession = useCallback(() => {
     setIsSessionActive(false);

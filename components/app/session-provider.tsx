@@ -63,10 +63,8 @@ export const SessionProvider = ({
     (avatar: AvatarConfig) => {
       setSelectedAvatar(avatar);
       setViewState('session');
-      // Start session after avatar is selected
-      setTimeout(() => {
-        startSession();
-      }, 0);
+      // Start session with avatarId directly (don't wait for state update)
+      startSession(avatar.id);
     },
     [startSession]
   );
