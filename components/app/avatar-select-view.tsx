@@ -8,22 +8,22 @@ import { Button } from '@/components/livekit/button';
 
 interface AvatarSelectViewProps {
   avatars: AvatarConfig[];
-  onSelect: (avatar: AvatarConfig) => void;
+  onAvatarSelect: (avatar: AvatarConfig) => void;
   onBack: () => void;
 }
 
 export const AvatarSelectView = ({
   avatars,
-  onSelect,
+  onAvatarSelect,
   onBack,
   ref,
-}: React.ComponentProps<'div'> & AvatarSelectViewProps) => {
+}: Omit<React.ComponentProps<'div'>, 'onSelect'> & AvatarSelectViewProps) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const handleConfirm = () => {
     const avatar = avatars.find((a) => a.id === selectedId);
     if (avatar) {
-      onSelect(avatar);
+      onAvatarSelect(avatar);
     }
   };
 

@@ -69,7 +69,7 @@ export function ViewController() {
           key="avatar-select"
           {...VIEW_MOTION_PROPS}
           avatars={appConfig.avatars}
-          onSelect={selectAvatarAndStartSession}
+          onAvatarSelect={selectAvatarAndStartSession}
           onBack={goToWelcome}
         />
       )}
