@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "title": "liveC 语音助手",
+    "description": "基于 liveC 构建的语音 AI 助手"
+  },
+  "header": {
+    "builtWith": "技术支持",
+    "liveCAgents": "liveC Agents"
+  },
+  "welcome": {
+    "description": "与您的 AI 语音助手实时对话",
+    "startCall": "开始通话",
+    "helpText": "需要帮助？请查看",
+    "quickstart": "语音 AI 快速入门"
+  },
+  "avatarSelect": {
+    "back": "返回",
+    "title": "选择您的助手",
+    "description": "请选择一位助手为您服务。所有助手均经过专业培训，随时准备为您提供帮助。",
+    "startChat": "开始聊天"
+  },
+  "avatars": {
+    "avatar_male_001": {
+      "name": "李明",
+      "description": "资深社工，擅长心理辅导"
+    },
+    "avatar_female_001": {
+      "name": "王芳",
+      "description": "专业社工，热心服务社区"
+    }
+  },
+  "session": {
+    "listeningPrompt": "助手正在聆听，请提问",
+    "sessionEnded": "会话已结束",
+    "agentError": "连接 Agent 时出错",
+    "didNotInitialize": "Agent 已连接但未完成初始化。",
+    "seeQuickstart": "查看快速入门指南"
+  },
+  "controls": {
+    "toggleMicrophone": "切换麦克风",
+    "toggleCamera": "切换摄像头",
+    "toggleScreenShare": "切换屏幕共享",
+    "toggleTranscript": "切换字幕",
+    "endCall": "结束通话",
+    "end": "结束",
+    "startAudio": "开启音频"
+  },
+  "chat": {
+    "placeholder": "输入消息...",
+    "sending": "发送中...",
+    "send": "发送"
+  },
+  "deviceSelect": {
+    "selectDevice": "选择 {device}"
+  },
+  "errors": {
+    "mediaDevicesError": "媒体设备出错",
+    "connectionError": "连接 Agent 时出错",
+    "fetchError": "获取连接详情时出错"
+  }
+}

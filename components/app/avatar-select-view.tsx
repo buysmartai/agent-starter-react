@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ArrowLeft, Check } from '@phosphor-icons/react';
 import type { AvatarConfig } from '@/app-config';
@@ -19,11 +20,30 @@ export const AvatarSelectView = ({
   ref,
 }: Omit<React.ComponentProps<'div'>, 'onSelect'> & AvatarSelectViewProps) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const t = useTranslations('avatarSelect');
+  const tAvatars = useTranslations('avatars');
 
   const handleConfirm = () => {
     const avatar = avatars.find((a) => a.id === selectedId);
     if (avatar) {
       onAvatarSelect(avatar);
+    }
+  };
+
+  // Get translated avatar name and description
+  const getAvatarName = (avatar: AvatarConfig) => {
+    try {
+      return tAvatars(`${avatar.id}.name`);
+    } catch {
+      return avatar.name;
+    }
+  };
+
+  const getAvatarDescription = (avatar: AvatarConfig) => {
+    try {
+      return tAvatars(`${avatar.id}.description`);
+    } catch {
+      return avatar.description;
     }
   };
 
@@ -37,17 +57,14 @@ export const AvatarSelectView = ({
             className="text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors"
           >
             <ArrowLeft size={20} />
-            <span className="text-sm">Back</span>
+            <span className="text-sm">{t('back')}</span>
           </button>
-          <h1 className="text-foreground text-xl font-semibold">Select Your Agent</h1>
+          <h1 className="text-foreground text-xl font-semibold">{t('title')}</h1>
           <div className="w-16" /> {/* Spacer for alignment */}
         </div>
 
         {/* Avatar description */}
-        <p className="text-muted-foreground mb-8 max-w-prose leading-6">
-          Please select an agent to assist you. All agents are professionally trained and ready to
-          help.
-        </p>
+        <p className="text-muted-foreground mb-8 max-w-prose leading-6">{t('description')}</p>
 
         {/* Avatar grid */}
         <div className="mb-8 grid w-full grid-cols-1 gap-6 sm:grid-cols-2">
@@ -72,7 +89,7 @@ export const AvatarSelectView = ({
               <div className="ring-background relative mb-4 h-52 w-40 overflow-hidden rounded-2xl shadow-md ring-4">
                 <Image
                   src={avatar.image}
-                  alt={avatar.name}
+                  alt={getAvatarName(avatar)}
                   fill
                   className="object-cover object-top"
                   sizes="160px"
@@ -80,8 +97,10 @@ export const AvatarSelectView = ({
               </div>
 
               {/* Avatar info */}
-              <h3 className="text-foreground mb-1 text-lg font-semibold">{avatar.name}</h3>
-              <p className="text-muted-foreground text-sm">{avatar.description}</p>
+              <h3 className="text-foreground mb-1 text-lg font-semibold">
+                {getAvatarName(avatar)}
+              </h3>
+              <p className="text-muted-foreground text-sm">{getAvatarDescription(avatar)}</p>
             </button>
           ))}
         </div>
@@ -94,7 +113,7 @@ export const AvatarSelectView = ({
           disabled={!selectedId}
           className="w-64 font-mono"
         >
-          Start Chat
+          {t('startChat')}
         </Button>
       </section>
     </div>

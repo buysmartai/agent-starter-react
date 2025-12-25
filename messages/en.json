@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "title": "liveC Voice Agent",
+    "description": "A voice agent built with liveC"
+  },
+  "header": {
+    "builtWith": "Built with",
+    "liveCAgents": "liveC Agents"
+  },
+  "welcome": {
+    "description": "Chat live with your voice AI agent",
+    "startCall": "Start call",
+    "helpText": "Need help getting set up? Check out the",
+    "quickstart": "Voice AI quickstart"
+  },
+  "avatarSelect": {
+    "back": "Back",
+    "title": "Select Your Agent",
+    "description": "Please select an agent to assist you. All agents are professionally trained and ready to help.",
+    "startChat": "Start Chat"
+  },
+  "avatars": {
+    "avatar_male_001": {
+      "name": "Michael",
+      "description": "Senior social worker, specializing in counseling"
+    },
+    "avatar_female_001": {
+      "name": "Sarah",
+      "description": "Professional social worker, dedicated to community service"
+    }
+  },
+  "session": {
+    "listeningPrompt": "Agent is listening, ask it a question",
+    "sessionEnded": "Session ended",
+    "agentError": "Error connecting to agent",
+    "didNotInitialize": "Agent connected but did not complete initializing.",
+    "seeQuickstart": "See quickstart guide"
+  },
+  "controls": {
+    "toggleMicrophone": "Toggle microphone",
+    "toggleCamera": "Toggle camera",
+    "toggleScreenShare": "Toggle screen share",
+    "toggleTranscript": "Toggle transcript",
+    "endCall": "END CALL",
+    "end": "END",
+    "startAudio": "Start Audio"
+  },
+  "chat": {
+    "placeholder": "Type something...",
+    "sending": "Sending...",
+    "send": "Send"
+  },
+  "deviceSelect": {
+    "selectDevice": "Select {device}"
+  },
+  "errors": {
+    "mediaDevicesError": "Encountered an error with your media devices",
+    "connectionError": "There was an error connecting to the agent",
+    "fetchError": "Error fetching connection details"
+  }
+}

@@ -1,4 +1,6 @@
+import { getTranslations } from 'next-intl/server';
 import { headers } from 'next/headers';
+import { LanguageSwitcher } from '@/components/app/language-switcher';
 import { getAppConfig } from '@/lib/utils';
 
 interface LayoutProps {
@@ -8,6 +10,7 @@ interface LayoutProps {
 export default async function Layout({ children }: LayoutProps) {
   const hdrs = await headers();
   const { companyName, logo, logoDark } = await getAppConfig(hdrs);
+  const t = await getTranslations('header');
 
   return (
     <>
@@ -27,17 +30,20 @@ export default async function Layout({ children }: LayoutProps) {
             className="hidden size-6 dark:block"
           />
         </a>
-        <span className="text-foreground font-mono text-xs font-bold tracking-wider uppercase">
-          Built with{' '}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://livec.ai"
-            className="underline underline-offset-4"
-          >
-            liveC Agents
-          </a>
-        </span>
+        <div className="flex items-center gap-4">
+          <span className="text-foreground font-mono text-xs font-bold tracking-wider uppercase">
+            {t('builtWith')}{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://livec.ai"
+              className="underline underline-offset-4"
+            >
+              {t('liveCAgents')}
+            </a>
+          </span>
+          <LanguageSwitcher />
+        </div>
       </header>
 
       {children}

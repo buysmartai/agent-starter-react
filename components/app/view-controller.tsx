@@ -56,12 +56,7 @@ export function ViewController() {
     <AnimatePresence mode="wait">
       {/* Welcome screen */}
       {viewState === 'welcome' && (
-        <MotionWelcomeView
-          key="welcome"
-          {...VIEW_MOTION_PROPS}
-          startButtonText={appConfig.startButtonText}
-          onStartCall={goToAvatarSelect}
-        />
+        <MotionWelcomeView key="welcome" {...VIEW_MOTION_PROPS} onStartCall={goToAvatarSelect} />
       )}
       {/* Avatar selection screen */}
       {viewState === 'avatar-select' && (
