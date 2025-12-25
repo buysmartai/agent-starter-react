@@ -40,9 +40,9 @@ export const APP_CONFIG_DEFAULTS: AppConfig = {
   supportsScreenShare: true,
   isPreConnectBufferEnabled: true,
 
-  logo: '/lk-logo.svg',
+  logo: 'https://livec.ai/_next/image?url=%2Ficon-96.png&w=96&q=75',
   accent: '#002cf2',
-  logoDark: '/lk-logo-dark.svg',
+  logoDark: 'https://livec.ai/_next/image?url=%2Ficon-96.png&w=96&q=75',
   accentDark: '#1fd5f9',
   startButtonText: 'Start call',
 
