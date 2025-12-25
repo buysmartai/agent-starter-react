@@ -45,7 +45,8 @@ export const AvatarSelectView = ({
 
         {/* Avatar description */}
         <p className="text-muted-foreground mb-8 max-w-prose leading-6">
-          Please select an agent to assist you. All agents are professionally trained and ready to help.
+          Please select an agent to assist you. All agents are professionally trained and ready to
+          help.
         </p>
 
         {/* Avatar grid */}
