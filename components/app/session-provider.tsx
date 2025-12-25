@@ -32,15 +32,21 @@ interface SessionProviderProps {
   children: React.ReactNode;
 }
 
-export const SessionProvider = ({ appConfig: initialAppConfig, children }: SessionProviderProps) => {
+export const SessionProvider = ({
+  appConfig: initialAppConfig,
+  children,
+}: SessionProviderProps) => {
   const [viewState, setViewState] = useState<ViewState>('welcome');
   const [selectedAvatar, setSelectedAvatar] = useState<AvatarConfig | null>(null);
 
   // Create appConfig with selected avatarId
-  const appConfig = useMemo(() => ({
-    ...initialAppConfig,
-    avatarId: selectedAvatar?.id,
-  }), [initialAppConfig, selectedAvatar]);
+  const appConfig = useMemo(
+    () => ({
+      ...initialAppConfig,
+      avatarId: selectedAvatar?.id,
+    }),
+    [initialAppConfig, selectedAvatar]
+  );
 
   const { room, isSessionActive, startSession, endSession: roomEndSession } = useRoom(appConfig);
 
@@ -53,14 +59,17 @@ export const SessionProvider = ({ appConfig: initialAppConfig, children }: Sessi
     setSelectedAvatar(null);
   }, []);
 
-  const selectAvatarAndStartSession = useCallback((avatar: AvatarConfig) => {
-    setSelectedAvatar(avatar);
-    setViewState('session');
-    // Start session after avatar is selected
-    setTimeout(() => {
-      startSession();
-    }, 0);
-  }, [startSession]);
+  const selectAvatarAndStartSession = useCallback(
+    (avatar: AvatarConfig) => {
+      setSelectedAvatar(avatar);
+      setViewState('session');
+      // Start session after avatar is selected
+      setTimeout(() => {
+        startSession();
+      }, 0);
+    },
+    [startSession]
+  );
 
   const endSession = useCallback(() => {
     roomEndSession();
@@ -79,7 +88,16 @@ export const SessionProvider = ({ appConfig: initialAppConfig, children }: Sessi
       selectAvatarAndStartSession,
       endSession,
     }),
-    [appConfig, viewState, selectedAvatar, isSessionActive, goToAvatarSelect, goToWelcome, selectAvatarAndStartSession, endSession]
+    [
+      appConfig,
+      viewState,
+      selectedAvatar,
+      isSessionActive,
+      goToAvatarSelect,
+      goToWelcome,
+      selectAvatarAndStartSession,
+      endSession,
+    ]
   );
 
   return (
