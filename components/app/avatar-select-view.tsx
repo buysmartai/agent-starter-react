@@ -69,13 +69,13 @@ export const AvatarSelectView = ({
               )}
 
               {/* Avatar image */}
-              <div className="ring-background relative mb-4 h-32 w-32 overflow-hidden rounded-full shadow-md ring-4">
+              <div className="ring-background relative mb-4 h-52 w-40 overflow-hidden rounded-2xl shadow-md ring-4">
                 <Image
                   src={avatar.image}
                   alt={avatar.name}
                   fill
-                  className="object-cover"
-                  sizes="128px"
+                  className="object-cover object-top"
+                  sizes="160px"
                 />
               </div>
 
