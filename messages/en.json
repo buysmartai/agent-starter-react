@@ -1,16 +1,16 @@
 {
   "metadata": {
-    "title": "liveC Voice Agent",
-    "description": "A voice agent built with liveC"
+    "title": "liveC Voice Assistant",
+    "description": "A voice AI assistant built with liveC"
   },
   "header": {
-    "builtWith": "Built with",
+    "builtWith": "Powered by",
     "liveCAgents": "liveC Agents"
   },
   "welcome": {
-    "description": "Chat live with your voice AI agent",
+    "description": "This is a virtual companion you can talk to anytime. Whether you want to share your feelings, ease some stress, or simply have a light conversation, it will listen patiently and respond in a gentle, relaxed way. Sometimes, simply having a conversation can be a meaningful kind of companionship.",
     "startCall": "Start call",
-    "helpText": "Need help getting set up? Check out the",
+    "helpText": "Need help? Check out the",
     "quickstart": "Voice AI quickstart"
   },
   "avatarSelect": {
@@ -21,12 +21,12 @@
   },
   "avatars": {
     "3d97d02718a64042ab4a2911982bf92f": {
-      "name": "LinZhou",
-      "description": "Senior social worker, specializing in counseling"
+      "name": "Xiao Dai",
+      "description": "Senior social worker specializing in psychological support"
     },
     "c1b86b09ecb94fdca0e385a812d2f51a": {
-      "name": "QingNing",
-      "description": "Professional social worker, dedicated to community service"
+      "name": "Xiao Lu",
+      "description": "Professional social worker dedicated to community service"
     }
   },
   "session": {

@@ -8,7 +8,7 @@
     "liveCAgents": "liveC Agents"
   },
   "welcome": {
-    "description": "与您的 AI 语音助手实时对话",
+    "description": "这是一个可以随时陪你聊天的虚拟伙伴。无论是想说说心情、缓解压力，还是只是轻松聊几句，它都会耐心倾听，并用温和、轻松的方式回应你。有时候，简单地聊一聊，本身就是一种很好的陪伴。",
     "startCall": "开始通话",
     "helpText": "需要帮助？请查看",
     "quickstart": "语音 AI 快速入门"
