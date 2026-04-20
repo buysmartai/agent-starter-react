@@ -36,7 +36,9 @@ export const WelcomeView = ({
       <section className="bg-background flex flex-col items-center justify-center text-center">
         <WelcomeImage />
 
-        <p className="text-foreground max-w-prose pt-1 text-[17px] leading-7 font-medium">{t('description')}</p>
+        <p className="text-foreground max-w-prose pt-1 text-[17px] leading-7 font-medium">
+          {t('description')}
+        </p>
 
         <Button variant="primary" size="lg" onClick={onStartCall} className="mt-6 w-64 font-mono">
           {t('startCall')}
