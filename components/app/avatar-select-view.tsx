@@ -64,7 +64,7 @@ export const AvatarSelectView = ({
         </div>
 
         {/* Avatar description */}
-        <p className="text-muted-foreground mb-8 max-w-prose leading-6">{t('description')}</p>
+        <p className="text-muted-foreground mb-8 max-w-prose text-[17px] leading-7">{t('description')}</p>
 
         {/* Avatar grid */}
         <div className="mb-8 grid w-full grid-cols-1 gap-6 sm:grid-cols-2">
