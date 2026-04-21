@@ -1,8 +1,8 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { AnimatePresence, motion } from 'motion/react';
 import { type ReceivedChatMessage } from '@livekit/components-react';
-import { useTranslations } from 'next-intl';
 import { ShimmerText } from '@/components/livekit/shimmer-text';
 import { cn } from '@/lib/utils';
 
@@ -47,9 +47,7 @@ export function PreConnectMessage({ className, messages = [] }: PreConnectMessag
           aria-hidden={messages.length > 0}
           className={cn('pointer-events-none text-center', className)}
         >
-          <ShimmerText className="text-sm font-semibold">
-            {t('listeningPrompt')}
-          </ShimmerText>
+          <ShimmerText className="text-sm font-semibold">{t('listeningPrompt')}</ShimmerText>
         </MotionMessage>
       )}
     </AnimatePresence>
