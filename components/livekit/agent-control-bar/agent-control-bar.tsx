@@ -4,6 +4,7 @@ import { type HTMLAttributes, useCallback, useState } from 'react';
 import { Track } from 'livekit-client';
 import { useChat, useRemoteParticipants } from '@livekit/components-react';
 import { ChatTextIcon, PhoneDisconnectIcon } from '@phosphor-icons/react/dist/ssr';
+import { useTranslations } from 'next-intl';
 import { useSession } from '@/components/app/session-provider';
 import { TrackToggle } from '@/components/livekit/agent-control-bar/track-toggle';
 import { Button } from '@/components/livekit/button';
@@ -46,6 +47,7 @@ export function AgentControlBar({
   const [chatOpen, setChatOpen] = useState(false);
   const publishPermissions = usePublishPermissions();
   const { isSessionActive, endSession } = useSession();
+  const t = useTranslations('controls');
 
   const {
     micTrackRef,
@@ -169,8 +171,8 @@ export function AgentControlBar({
             className="font-mono"
           >
             <PhoneDisconnectIcon weight="bold" />
-            <span className="hidden md:inline">END CALL</span>
-            <span className="inline md:hidden">END</span>
+            <span className="hidden md:inline">{t('endCall')}</span>
+            <span className="inline md:hidden">{t('end')}</span>
           </Button>
         )}
       </div>

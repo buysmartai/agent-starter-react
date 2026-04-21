@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'motion/react';
 import { type ReceivedChatMessage } from '@livekit/components-react';
+import { useTranslations } from 'next-intl';
 import { ShimmerText } from '@/components/livekit/shimmer-text';
 import { cn } from '@/lib/utils';
 
@@ -37,6 +38,7 @@ interface PreConnectMessageProps {
 }
 
 export function PreConnectMessage({ className, messages = [] }: PreConnectMessageProps) {
+  const t = useTranslations('session');
   return (
     <AnimatePresence>
       {messages.length === 0 && (
@@ -46,7 +48,7 @@ export function PreConnectMessage({ className, messages = [] }: PreConnectMessag
           className={cn('pointer-events-none text-center', className)}
         >
           <ShimmerText className="text-sm font-semibold">
-            Agent is listening, ask it a question
+            {t('listeningPrompt')}
           </ShimmerText>
         </MotionMessage>
       )}
